@@ -4,8 +4,11 @@ If multiple solutions are possible such that (a,b) & (c,d) print (a,b) if a < c 
 
 """
 
+import math
 def isPrime(A):
-    for i in range(2, A):
+    if A == 1:
+        return False
+    for i in range(2, int(math.sqrt(A))+1):
         if A%i == 0:
             return False
     return True
@@ -13,14 +16,14 @@ def isPrime(A):
 def main(A):
     a = 10**7
     b = 10**7
-    for i in range(1, A):
+    for i in range(2, int(math.sqrt(A))+1):
         if isPrime(i):
             j = A - i
             if isPrime(j):
                 if i < a and j < b:
                     a = i
                     b = j
-    return (a,b)                
+    return (a,b)            
             
 main(1024) 
 # Output: (3, 1021)
